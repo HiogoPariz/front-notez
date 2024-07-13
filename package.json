@@ -36,9 +36,10 @@
 	"type": "module",
 	"dependencies": {
 		"@editorjs/checklist": "^1.6.0",
-		"@editorjs/editorjs": "^2.29.1",
+		"@editorjs/editorjs": "^2.30.2",
 		"@editorjs/header": "^2.8.5",
 		"@editorjs/list": "^1.9.0",
-		"@editorjs/quote": "^2.6.0"
+		"@editorjs/quote": "^2.6.0",
+		"lodash.throttle": "^4.1.1"
 	}
 }
