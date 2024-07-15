@@ -2,18 +2,23 @@
 	// @ts-nocheck
 	import { onMount } from 'svelte';
 	import throttle from 'lodash.throttle';
+	import { json } from '@sveltejs/kit';
 	let editor
+	let noteTitle 
+	let jsonTitle = {}
 
 	// AUTO SAVE FUNCTION
 	// TODO DEFINE MS
 	// DEFINE IP PROTOCOL
+	
 	const delay = 300;
-	const throttleKeydownSave = throttle(() => {
+	const throttleSave = throttle(() => {
 		save();
 	}, delay);
-
-	const handleKeydown = (e) => {
-		throttleKeydownSave(e);
+	
+	// TODO ONCHANGE
+	const handleSave = (e) => {
+		throttleSave(e);
 	};
 
 	async function save() {
@@ -33,6 +38,14 @@
 			console.error('ERROR:', error);
 		}
 	}
+
+	// Input Title JSON
+	function submitInputTitle(e){
+		const input = event.target.value;
+		jsonTitle = { "title": input }
+		console.log(JSON.stringify(jsonTitle))
+	}
+
 
 	onMount(
 		async () => {
@@ -64,11 +77,17 @@
 					inlineToolbar: true,
 					shortcut: 'CMD+SHIFT+O'
 				},
+			},
+			onChange: async() => {
+				await handleSave();
 			}
 		})
 		}
 	);
+
 </script>
 
-<svelte:window on:keydown={handleKeydown} />
+
+<title>{noteTitle|| "Default - Notez"}</title>
+<input on:change={submitInputTitle} bind:value={noteTitle} placeholder="Notez Title"/>
 <div class="editor" id="editor"/>
