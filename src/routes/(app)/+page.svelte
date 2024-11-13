@@ -87,7 +87,7 @@
 <svelte:head>
 	<title>{noteTitle || 'Default - Notez'}</title>
 </svelte:head>
-<section class="flex flex-col items-center w-full p-4">
+<section class="flex flex-col items-center p-4">
 	<input on:change={submitInputTitle} bind:value={noteTitle} placeholder="Notez Title" />
 	<div class="editor w-full" id="editor" ></div>
 </section>

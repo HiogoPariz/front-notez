@@ -5,3 +5,9 @@
 body, html {
     @apply text-black m-0 p-0 min-h-screen min-w-full
 }
+
+main {
+    display: grid;
+    width: 100%;
+    grid-template-columns: minmax(120px, 240px) 1fr;
+}
